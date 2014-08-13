@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+    
+{% block title %}Twig examples {% endblock %}
+
+{% block content %}
+    <h1>Liste des articles</h2>
+        {# Commentaire  
+        #}
+        {% for article in articles %}
+        <div>
+            <h2>{{article.title|title}}</h2>
+            <p>
+                Ecrit le : {{article.date|date("d/m/Y","Europe/Paris")}}
+            </p>
+        </div>
+        {% endfor %}
+{% endblock %}

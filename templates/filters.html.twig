@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<h1>Filters</h1>
+<h4>Abs</h4>
+<p>
+      <code>{{"{{ number|abs }}"}}</code>
+</p>
+<p>
+ 
+   {% set number = -5 %}
+   Number = -5 <br/>
+   Result = {{number|abs}} 
+</p>
+
+<h4>batch</h4>
+<p>
+      <code>{{"{{ items|batch(nbPerRow,textIfEmptyColumn)}}"}}</code>
+</p>
+<p>
+    <table> 
+   {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
+   {% for row in items|batch(3, 'No item') %}
+        <tr>
+            {% for column in row %}
+            <td>{{column}}</td>
+            {% endfor %}
+        </tr>
+   {% endfor %}
+    </table>
+</p>
+
+<h4>capitalize</h4>
+<p>
+      <code>{{"{{ text|capitalize }}"}}</code>
+</p>
+<p>
+ 
+   {% set text = "hello all" %}
+   Text = hello all <br/>
+   Result = {{text|capitalize}} 
+</p>
+
+
+<h4>convert_encoding</h4>
+<p>
+      <code>{{"{{ data|convert_encoding('UTF-8', 'iso-2022-jp') }}"}}</code>
+</p>
+<p>
+ 
+   {% set text = "Salut à David et toute l'assemblée" %}
+   Text = Salut à David et toute l'assemblée <br/>
+   Result = {{text|convert_encoding('iso-2022-jp', 'UTF-8')}} 
+</p>
+
+
+
+{% endblock %}
